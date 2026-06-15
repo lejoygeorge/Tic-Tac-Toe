@@ -34,4 +34,15 @@ describe('Tic-Tac-Toe Kata', () => {
     expect(square0).toHaveTextContent('X');
     expect(screen.getByRole('status')).toHaveTextContent('Next player: O'); 
   });
+
+  test('Rule 4: Declares a winner when a player has three in a row', () => {
+    render(<App />);
+    fireEvent.click(screen.getByTestId('square-0'));
+    fireEvent.click(screen.getByTestId('square-3'));
+    fireEvent.click(screen.getByTestId('square-1'));
+    fireEvent.click(screen.getByTestId('square-4'));
+    fireEvent.click(screen.getByTestId('square-2'));
+
+    expect(screen.getByRole('status')).toHaveTextContent('Winner: X');
+  });
 });
