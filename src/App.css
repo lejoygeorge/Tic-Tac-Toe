@@ -42,3 +42,9 @@
 .reset-button:hover {
   background-color: #555;
 }
+
+.square.highlight {
+  background-color: #4caf50;
+  color: white;
+  transition: background-color 0.3s ease;
+}

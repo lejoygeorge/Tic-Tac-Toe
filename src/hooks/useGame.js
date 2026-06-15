@@ -5,7 +5,10 @@ export function useGame() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
 
-  const winner = calculateWinner(board);
+  const winInfo = calculateWinner(board);
+  const winner = winInfo ? winInfo.winner : null;
+  const winningLine = winInfo ? winInfo.line : [];
+  
   const isDraw = !winner && board.every(square => square !== null);
 
   const playMove = (index) => {
@@ -23,5 +26,5 @@ export function useGame() {
     setXIsNext(true);
   };
 
-  return { board, xIsNext, winner, isDraw, playMove, resetGame };
+  return { board, xIsNext, winner, winningLine, isDraw, playMove, resetGame };
 }

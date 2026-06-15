@@ -3,7 +3,7 @@ import Board from './components/Board';
 import './App.css';
 
 export default function App() {
-  const { board, xIsNext, winner, isDraw, playMove, resetGame } = useGame();
+  const { board, xIsNext, winner, winningLine, isDraw, playMove, resetGame } = useGame();
 
   let status;
   if (winner) {
@@ -17,7 +17,7 @@ export default function App() {
   return (
     <div className="App">
       <div role="status" className="status">{status}</div>
-      <Board board={board} onSquareClick={playMove}/>
+      <Board board={board} onSquareClick={playMove} winningLine={winningLine} />
       <button className="reset-button" onClick={resetGame}>
         Reset Game
       </button>

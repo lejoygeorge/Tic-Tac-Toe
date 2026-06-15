@@ -1,7 +1,7 @@
 import React from 'react';
 import Square from './Square';
 
-export default function Board({ board, onSquareClick}) {
+export default function Board({ board, onSquareClick, winningLine}) {
   return (
     <div className="board">
       {board.map((cell, index) => (
@@ -9,6 +9,7 @@ export default function Board({ board, onSquareClick}) {
           key={index} 
           value={cell} 
           onClick={() => onSquareClick(index)} 
+          isWinningSquare={winningLine.includes(index)} 
           data-testid={`square-${index}`}
         />
       ))}

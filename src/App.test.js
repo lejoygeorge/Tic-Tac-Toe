@@ -70,4 +70,21 @@ describe('Tic-Tac-Toe Kata', () => {
     expect(square0).toBeEmptyDOMElement();
     expect(screen.getByRole('status')).toHaveTextContent('Next player: X');
   });
+
+  test('Addon: Applies highlight class to winning squares after a game is won', () => {
+    render(<App />);
+
+    fireEvent.click(screen.getByTestId('square-0')); // X
+    fireEvent.click(screen.getByTestId('square-1')); // O
+    fireEvent.click(screen.getByTestId('square-3')); // X
+    fireEvent.click(screen.getByTestId('square-2')); // O
+    fireEvent.click(screen.getByTestId('square-6')); // X wins!
+
+    expect(screen.getByRole('status')).toHaveTextContent('Winner: X');
+
+    expect(screen.getByTestId('square-0')).toHaveClass('highlight');
+    expect(screen.getByTestId('square-3')).toHaveClass('highlight');
+    expect(screen.getByTestId('square-6')).toHaveClass('highlight');
+    expect(screen.getByTestId('square-1')).not.toHaveClass('highlight');
+  });
 });

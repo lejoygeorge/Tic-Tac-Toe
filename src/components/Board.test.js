@@ -17,4 +17,14 @@ describe('Board Component', () => {
     fireEvent.click(middleSquare);
     expect(mockOnSquareClick).toHaveBeenCalledWith(4);
   });
+
+  test('Highlights the correct squares when a winningLine is provided', () => {
+    const board = ['X', 'X', 'X', 'O', 'O', null, null, null, null];
+    const winningLine = [0, 1, 2];
+    render(<Board board={board} onSquareClick={() => {}} winningLine={winningLine} />);
+    expect(screen.getByTestId('square-0')).toHaveClass('highlight');
+    expect(screen.getByTestId('square-1')).toHaveClass('highlight');
+    expect(screen.getByTestId('square-2')).toHaveClass('highlight');
+    expect(screen.getByTestId('square-3')).not.toHaveClass('highlight');
+  });
 });

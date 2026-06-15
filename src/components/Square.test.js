@@ -15,4 +15,10 @@ describe('Square Component', () => {
     fireEvent.click(button);   
     expect(mockOnClick).toHaveBeenCalledTimes(1);
   });
+
+  test('Applies the highlight class when isWinningSquare is true', () => {
+    render(<Square value="X" onClick={() => {}} isWinningSquare={true} />);
+    const button = screen.getByRole('button');
+    expect(button).toHaveClass('highlight');
+  });
 });

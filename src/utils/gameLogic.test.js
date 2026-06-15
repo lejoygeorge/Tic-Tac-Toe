@@ -12,7 +12,7 @@ describe('calculateWinner', () => {
       'O', 'O', null,
       null, null, null
     ];
-    expect(calculateWinner(board)).toBe('X');
+    expect(calculateWinner(board).winner).toBe('X');
   });
 
   test('Returns O when O has a diagonal winning line', () => {
@@ -21,6 +21,6 @@ describe('calculateWinner', () => {
       null, 'O', null,
       'X', null, 'O'
     ];
-    expect(calculateWinner(board)).toBe('O');
+    expect(calculateWinner(board).winner).toBe('O');
   });
 });
