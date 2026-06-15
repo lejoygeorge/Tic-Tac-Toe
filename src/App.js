@@ -6,13 +6,16 @@ function App() {
   const [xIsNext, setXIsNext] = useState(true);
   const handleClick = (index) => {
     const newBoard = [...board];
-    newBoard[index] = 'X';
+    newBoard[index] = xIsNext ? 'X' : 'O';
     setBoard(newBoard);
     setXIsNext(!xIsNext);
   };
 
+  let status = `Next player: ${xIsNext ? 'X' : 'O'}`;
+
   return (
     <div className="App">
+      <div role="status" className="status">{status}</div>
       <div className="board">
         {board.map((cell, index) => (
           <button 

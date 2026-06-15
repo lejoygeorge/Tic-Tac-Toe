@@ -11,4 +11,16 @@ describe('Tic-Tac-Toe Kata', () => {
 
     expect(square0).toHaveTextContent('X');
   });
+
+  test('Rule 2: Players alternate placing Xs and Os', () => {
+    render(<App />);
+    const square0 = screen.getByTestId('square-0');
+    const square1 = screen.getByTestId('square-1');
+
+    fireEvent.click(square0);
+    fireEvent.click(square1);
+
+    expect(square0).toHaveTextContent('X');
+    expect(square1).toHaveTextContent('O');
+  });
 });
