@@ -23,4 +23,15 @@ describe('Tic-Tac-Toe Kata', () => {
     expect(square0).toHaveTextContent('X');
     expect(square1).toHaveTextContent('O');
   });
+
+  test('Rule 3: Players cannot play on a played position', () => {
+    render(<App />);
+    const square0 = screen.getByTestId('square-0');
+
+    fireEvent.click(square0);
+    fireEvent.click(square0);
+
+    expect(square0).toHaveTextContent('X');
+    expect(screen.getByRole('status')).toHaveTextContent('Next player: O'); 
+  });
 });
