@@ -5,6 +5,7 @@ function App() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
   const winner = calculateWinner(board);
+  const isDraw = board.every(square => square !== null);
   const handleClick = (index) => {
     if (board[index] || winner) return;
     const newBoard = [...board];
@@ -16,6 +17,8 @@ function App() {
   let status
   if (winner) {
     status = `Winner: ${winner}`;
+  } else if (isDraw) {
+    status = 'Draw';
   } else {
    status = `Next player: ${xIsNext ? 'X' : 'O'}`;
   }

@@ -45,4 +45,15 @@ describe('Tic-Tac-Toe Kata', () => {
 
     expect(screen.getByRole('status')).toHaveTextContent('Winner: X');
   });
+
+  test('Rule 5: Declares a draw when all squares are filled without a winner', () => {
+    render(<App />);
+    const drawMoves = [0, 1, 2, 4, 3, 5, 7, 6, 8];
+    
+    drawMoves.forEach(move => {
+      fireEvent.click(screen.getByTestId(`square-${move}`));
+    });
+
+    expect(screen.getByRole('status')).toHaveTextContent('Draw');
+  });
 });
