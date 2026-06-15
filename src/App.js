@@ -14,6 +14,11 @@ function App() {
     setXIsNext(!xIsNext);
   };
 
+  const handleReset = () => {
+    setBoard(Array(9).fill(null));
+    setXIsNext(true);
+  };
+
   let status
   if (winner) {
     status = `Winner: ${winner}`;
@@ -37,6 +42,9 @@ function App() {
           </button>
         ))}
       </div>
+      <button className="reset-button" onClick={handleReset}>
+        Reset Game
+      </button>
     </div>
   );
 }

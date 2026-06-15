@@ -56,4 +56,18 @@ describe('Tic-Tac-Toe Kata', () => {
 
     expect(screen.getByRole('status')).toHaveTextContent('Draw');
   });
+
+  test('Addon: Reset button clears the board and resets the game state', () => {
+    render(<App />);
+    const square0 = screen.getByTestId('square-0');
+
+    fireEvent.click(square0);
+    expect(square0).toHaveTextContent('X');
+
+    const resetButton = screen.getByText('Reset Game');
+    fireEvent.click(resetButton);
+
+    expect(square0).toBeEmptyDOMElement();
+    expect(screen.getByRole('status')).toHaveTextContent('Next player: X');
+  });
 });
